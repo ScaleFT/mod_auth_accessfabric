@@ -39,10 +39,11 @@ download_and_hash() {
 
 rm -rf  "${DIR}/build"
 mkdir -p "${DIR}/build"
-
 LIBXJWT_LOCAL_TAR="${DIR}/build/libxjwt.tar.gz"
 LIBXJWT_INST_DIR="${DIR}/build/local-libxjwt"
 download_and_hash "${LIBXJWT_LOCAL_TAR}" "${LIBXJWT_URL}" "${LIBXJWT_HASH}"
+
+mkdir -p "${LIBXJWT_INST_DIR}"
 
 cd "${DIR}"
 cd ..
