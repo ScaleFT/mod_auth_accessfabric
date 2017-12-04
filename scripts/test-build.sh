@@ -11,6 +11,8 @@ LIBXJWT_URL="https://github.com/ScaleFT/libxjwt/archive/v${LIBXJWT_VERSION}.tar.
 DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 
+DIR=`readlink -f "${DIR}"`
+
 cd "${DIR}"
 cd ..
 
