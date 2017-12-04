@@ -1,0 +1,15 @@
+---
+dist: trusty
+addons:
+  apt:
+    packages:
+    - curl
+    - libjansson-dev
+    - libjansson4
+    - apache2
+    - apache2-dev
+    - libapr1-dev
+    - libaprutil1-dev
+    - libcurl4-openssl-dev
+language: cpp
+script: ./scripts/test-build.sh

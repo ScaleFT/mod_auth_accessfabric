@@ -1,0 +1,26 @@
+from os.path import join as pjoin
+
+Import('env')
+
+lenv = env.Clone()
+
+
+if lenv['PLATFORM'] == 'darwin':
+    # We link to symbols from the main httpd;  Darwin's linker doesn't like this.
+    lenv.AppendUnique(LINKFLAGS = ['-undefined', 'dynamic_lookup'])
+    # the AP_INIT_TAKE1 has a default initializer, which is technically c99, not c89 :(
+    lenv.AppendUnique(CPPFLAGS = ['-Wno-c99-extensions'])
+
+if lenv['PLATFORM'] == 'linux':
+    # the AP_INIT_TAKE1 has a default initializer, which is technically c99, not c89 :(
+    lenv.AppendUnique(CPPFLAGS = ['-std=c99'])
+
+modsources = Split("""
+    af_cache.c
+    af_fetch.c
+    mod_auth_accessfabric.c
+""")
+
+module = lenv.LoadableModule(target = 'mod_auth_accessfabric.so', source = [modsources], SHLIBPREFIX='')
+
+Return('module')
