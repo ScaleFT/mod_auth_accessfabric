@@ -202,7 +202,7 @@ fenv = env.Clone()
 all_source_files = get_files(fenv, 'src', ['*.c', '*.h'])
 
 fenv['CLANG_FORMAT'] = 'clang-format'
-fenv['CLANG_FORMAT_OPTIONS'] = '-style="{BasedOnStyle: Google, SortIncludes: false}" -i'
+fenv['CLANG_FORMAT_OPTIONS'] = '-style=file -i'
 formatit = fenv.Command('.clang-format-all-source', all_source_files,
                     '$CLANG_FORMAT $CLANG_FORMAT_OPTIONS $SOURCES')
 fenv.AlwaysBuild(formatit)
