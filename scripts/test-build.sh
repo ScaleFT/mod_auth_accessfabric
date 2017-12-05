@@ -59,4 +59,4 @@ scons destdir="${LIBXJWT_INST_DIR}" install
 cd "${DIR}"
 cd ..
 
-scons APXS=/usr/bin/apxs with_libxjwt="${LIBXJWT_INST_DIR}"
+scons APXS=/usr/bin/apxs with_xjwt="${LIBXJWT_INST_DIR}/usr/local"
