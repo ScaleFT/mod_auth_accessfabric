@@ -1,5 +1,7 @@
 # mod_auth_accessfabric
 
+[![Build Status](https://travis-ci.org/ScaleFT/mod_auth_accessfabric.svg?branch=master)](https://travis-ci.org/ScaleFT/mod_auth_accessfabric)
+
 `mod_auth_accessfabric` is an Apache 2.4.x module for authenticating requests from the ScaleFT Access Fabric.  Requests are authenticated by validating the contents of the `Authenticated-User-JWT` header against a list of trusted signing JWKs from the ScaleFT Platform.
 
 # What's New

@@ -11,6 +11,8 @@ LIBXJWT_URL="https://github.com/ScaleFT/libxjwt/archive/v${LIBXJWT_VERSION}.tar.
 DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
 
+DIR=`readlink -f "${DIR}"`
+
 cd "${DIR}"
 cd ..
 
@@ -57,4 +59,4 @@ scons destdir="${LIBXJWT_INST_DIR}" install
 cd "${DIR}"
 cd ..
 
-scons APXS=/usr/bin/apxs with_libxjwt="${LIBXJWT_INST_DIR}"
+scons APXS=/usr/bin/apxs with_xjwt="${LIBXJWT_INST_DIR}/usr/local"
