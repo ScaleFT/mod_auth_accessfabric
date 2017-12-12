@@ -21,6 +21,8 @@ The `AuthAccessFabricAudience` configuration option must be set to the ScaleFT A
 In the ScaleFT dashboard, you can create an Access Fabric Application under a Project. Get the `APPLICATION URL` from the ScaleFT dashboard, and replace `calm-cerberus-0352.accessfabric.com` in the example below with your `APPLICATION URL`:
 
 ```
+LoadModule auth_accessfabric_module /usr/lib/apache2/modules/mod_auth_accessfabric.so
+
 <Location "/">
   AuthType AccessFabric
   AuthAccessFabricAudience "https://calm-cerberus-0352.accessfabric.com"
@@ -51,8 +53,8 @@ CustomLog "logs/access_log" extended-af
 ## Building
 
 ```
-scons APXS=/usr/bin/apxs with_libjxwt=/usr/local
-scons install APXS=/usr/bin/apxs with_libjxwt=/usr/local
+scons APXS=/usr/bin/apxs with_xjwt=/usr/local
+scons install APXS=/usr/bin/apxs with_xjwt=/usr/local
 ```
 
 ### Build Variables
