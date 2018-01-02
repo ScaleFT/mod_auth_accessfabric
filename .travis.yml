@@ -3,6 +3,10 @@ dist: trusty
 addons:
   apt:
     packages:
+    - autoconf-archive
+    - autotools-dev
+    - automake
+    - autoconf
     - curl
     - libjansson-dev
     - libjansson4
