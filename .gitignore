@@ -14,10 +14,10 @@ stamp-h1
 *~
 libtool
 .libs/
-libcmockery.a
 .dirstamp
 test-driver
 test-suite.log
 test_all
 test_all.log
 test_all.trs
+src/autoconf_config.h
