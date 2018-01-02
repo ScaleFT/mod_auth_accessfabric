@@ -1,6 +1,7 @@
 build/*
 .scons*
 *.o
+*.lo
 *.pyc
 .sconf_temp
 config.log
