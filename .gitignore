@@ -2,6 +2,7 @@ build/*
 .scons*
 *.o
 *.lo
+mod_auth_accessfabric.la
 *.pyc
 .sconf_temp
 config.log
