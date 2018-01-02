@@ -2,14 +2,11 @@ ACLOCAL_AMFLAGS = -I m4
 
 AUTOMAKE_OPTIONS = foreign
 
+dist_doc_DATA = README.md NOTICE LICENSE CONTRIBUTING.md CODE_OF_CONDUCT.md
+
 EXTRA_DIST = .clang-format \
     buildconf.sh \
-    CODE_OF_CONDUCT.md \
-    CONTRIBUTING.md \
-    NOTICE \
-    LICENSE \
-    ./scripts/test-build.sh \
-    README.md
+    ./scripts/test-build.sh
 
 lib_LTLIBRARIES = mod_auth_accessfabric.la
 
