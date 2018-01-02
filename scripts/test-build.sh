@@ -59,5 +59,6 @@ scons destdir="${LIBXJWT_INST_DIR}" install
 cd "${DIR}"
 cd ..
 
+./buildconf.sh
 ./configure --with-apxs=/usr/bin/apxs --with-xjwt="${LIBXJWT_INST_DIR}/usr/local"
 make
