@@ -13,7 +13,11 @@ EXTRA_DIST = .clang-format \
 
 lib_LTLIBRARIES = mod_auth_accessfabric.la
 
-install-exec-local: mod_auth_accessfabric.la
+# we override install, so that we don't also install the .so into /usr/local
+install: all-am
+	@$(MAKE) $(AM_MAKEFLAGS) install-apxs install-data
+
+install-apxs: mod_auth_accessfabric.la
 	$(MKDIR_P) $(DESTDIR)/@LIBEXEC_DIR@
 	$(APXS) -i -S LIBEXECDIR=$(DESTDIR)/@LIBEXEC_DIR@ -n auth_accessfabric mod_auth_accessfabric.la
 
