@@ -6,6 +6,10 @@
 
 # What's New
 
+## 1.0.1 (in development)
+
+- Add autotools based build (classic `./configure && make && make install`) [#4](https://github.com/ScaleFT/mod_auth_accessfabric/pull/4)
+
 ## 1.0.0
 
 Initial open source release.
@@ -42,28 +46,27 @@ CustomLog "logs/access_log" extended-af
 
 ## Dependencies
 
-- Apache 2.4.x with `apxs` available.
+- Apache 2.4.x with `apxs` available. (Found in `apache2-dev` for Debian-based distros or `httpd-devel` on RPM-based distros)
 - [libxjwt](https://github.com/ScaleFT/libxjwt): Library for validating JWTs
 - [libcurl](https://curl.haxx.se/libcurl/): Library for fetching remote JWKs
 - [OpenSSL](https://www.openssl.org/): `libxjwt` uses EC and EVP APIs.
 - [Jansson](http://www.digip.org/jansson/): JSON Parser used by `libxjwt`
-- (build-only) c89 compiler
-- (build-only) scons
 
 ## Building
 
 ```
-scons APXS=/usr/bin/apxs with_xjwt=/usr/local
-scons install APXS=/usr/bin/apxs with_xjwt=/usr/local
+./configure --with-xjwt=/usr/local
+make
+sudo make install
 ```
 
-### Build Variables
+### Build Flags
 
-- `APXS`: Path to the `apxs` command
-- `with_jansson`: Prefix to Jansson installation
-- `with_openssl`: Prefix to OpenSSL installation
-- `with_xjwt`: Prefix to libxjwt installation
-- `with_curl`: Prefix to libcurl installation
+- `--with-apxs=APXS`: Absolute path name of apxs executable
+- `--with-openssl=DIR`: Root of the OpenSSL installation
+- `--with-jansson=DIR`: Root of the Jansson installation
+- `--with-curl=DIR`: Root of the curl installation
+- `--with-xjwt=DIR`: Root of the xjwt installation
 
 # License
 
