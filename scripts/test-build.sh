@@ -4,9 +4,11 @@ set -eo pipefail
 
 set -x
 
-LIBXJWT_VERSION="1.0.1"
-LIBXJWT_HASH="e2dec5ffe9d9db69eb66ed9596afd83dfaefed515a9ba7cf32a2e785c4cb14cb"
-LIBXJWT_URL="https://github.com/ScaleFT/libxjwt/archive/v${LIBXJWT_VERSION}.tar.gz"
+LIBXJWT_VERSION="1.0.2"
+LIBXJWT_HASH="267f922cd8e8e357032763b8a31ad771e9622db6c202b88d107c9d74acc2867c"
+LIBXJWT_URL="https://github.com/ScaleFT/libxjwt/releases/download/v${LIBXJWT_VERSION}/libxjwt-${LIBXJWT_VERSION}.tar.gz"
+
+
 
 DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$DIR" ]]; then DIR="$PWD"; fi
@@ -52,14 +54,16 @@ cd ..
 tar -xz -f "${LIBXJWT_LOCAL_TAR}" -C "${DIR}/build"
 cd "${DIR}/build/libxjwt-${LIBXJWT_VERSION}"
 
-scons
-
-scons destdir="${LIBXJWT_INST_DIR}" install
+./configure
+make
+make DESTDIR="${LIBXJWT_INST_DIR}" install
 
 cd "${DIR}"
 cd ..
 
+MOD_INST_DIR="${DIR}/build/local-apache-module"
+
 ./buildconf.sh
 ./configure --with-apxs=/usr/bin/apxs --with-xjwt="${LIBXJWT_INST_DIR}/usr/local"
 make
-make distcheck
+make DESTDIR="${MOD_INST_DIR}" install
