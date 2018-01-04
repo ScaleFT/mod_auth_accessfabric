@@ -6,6 +6,8 @@
 
 # What's New
 
+## 1.0.2 (in development)
+
 ## 1.0.1
 
 - Add autotools based build (classic `./configure && make && make install`) [#4](https://github.com/ScaleFT/mod_auth_accessfabric/pull/4)
