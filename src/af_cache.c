@@ -129,7 +129,7 @@ static apr_status_t auth_af_jwk_cache_get_hit(
   auth_af_keyset_t *ks;
   apr_uint32_t gen;
 
-  if (entry->jwks_refresh_at == 0 || entry->jwks_refresh_at > r->request_time) {
+  if (entry->jwks_refresh_at == 0 || r->request_time > entry->jwks_refresh_at) {
     rv = auth_af_jwk_cache_refresh_from_disk(srv, key, ptemp, entry);
     if (rv != APR_SUCCESS) {
       ap_log_rerror(APLOG_MARK, APLOG_ERR, rv, r,
@@ -204,7 +204,7 @@ static apr_status_t auth_af_jwk_cache_refresh_from_disk(
   entry->jwks = buf;
   entry->jwks_len = finfo.size;
   /* TODO: this could be calculated based on the last modified time, but meh */
-  entry->jwks_refresh_at = apr_time_now();
+  entry->jwks_refresh_at = apr_time_now() + apr_time_from_sec(60);
 
   apr_thread_mutex_unlock(entry->mtx);
   return APR_SUCCESS;
